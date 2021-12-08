@@ -10,10 +10,16 @@
 		23AC4A00276064ED0007484F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC49FF276064ED0007484F /* AppDelegate.swift */; };
 		23AC4A02276064ED0007484F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A01276064ED0007484F /* SceneDelegate.swift */; };
 		23AC4A04276064ED0007484F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A03276064ED0007484F /* ViewController.swift */; };
-		23AC4A07276064ED0007484F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23AC4A05276064ED0007484F /* Main.storyboard */; };
 		23AC4A0A276064ED0007484F /* FallbackDataSource.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A08276064ED0007484F /* FallbackDataSource.xcdatamodeld */; };
 		23AC4A0C276064EE0007484F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23AC4A0B276064EE0007484F /* Assets.xcassets */; };
 		23AC4A0F276064EE0007484F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23AC4A0D276064EE0007484F /* LaunchScreen.storyboard */; };
+		23AC4A1B276065900007484F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A1A276065900007484F /* Post.swift */; };
+		23AC4A1D276065E70007484F /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A1C276065E70007484F /* RemoteDataSource.swift */; };
+		23AC4A20276067230007484F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A1F276067230007484F /* LocalDataSource.swift */; };
+		23AC4A23276068940007484F /* FallBackDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A22276068940007484F /* FallBackDataSource.swift */; };
+		23AC4A2627606A670007484F /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A2527606A670007484F /* CoreDataService.swift */; };
+		23AC4A2827606A6E0007484F /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A2727606A6E0007484F /* ApiService.swift */; };
+		23AC4A2A276072BA0007484F /* DecoratorRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A29276072BA0007484F /* DecoratorRemoteDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +27,17 @@
 		23AC49FF276064ED0007484F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23AC4A01276064ED0007484F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		23AC4A03276064ED0007484F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		23AC4A06276064ED0007484F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23AC4A09276064ED0007484F /* FallbackDataSource.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FallbackDataSource.xcdatamodel; sourceTree = "<group>"; };
 		23AC4A0B276064EE0007484F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23AC4A0E276064EE0007484F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23AC4A10276064EE0007484F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23AC4A1A276065900007484F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		23AC4A1C276065E70007484F /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		23AC4A1F276067230007484F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		23AC4A22276068940007484F /* FallBackDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallBackDataSource.swift; sourceTree = "<group>"; };
+		23AC4A2527606A670007484F /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		23AC4A2727606A6E0007484F /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		23AC4A29276072BA0007484F /* DecoratorRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorRemoteDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +70,70 @@
 		23AC49FE276064ED0007484F /* FallbackDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				23AC49FF276064ED0007484F /* AppDelegate.swift */,
-				23AC4A01276064ED0007484F /* SceneDelegate.swift */,
+				23AC4A1E276065ED0007484F /* App */,
+				23AC4A2427606A5C0007484F /* Services */,
+				23AC4A16276065280007484F /* Models */,
+				23AC4A172760652C0007484F /* DataSource */,
 				23AC4A03276064ED0007484F /* ViewController.swift */,
-				23AC4A05276064ED0007484F /* Main.storyboard */,
 				23AC4A0B276064EE0007484F /* Assets.xcassets */,
 				23AC4A0D276064EE0007484F /* LaunchScreen.storyboard */,
 				23AC4A10276064EE0007484F /* Info.plist */,
-				23AC4A08276064ED0007484F /* FallbackDataSource.xcdatamodeld */,
 			);
 			path = FallbackDataSource;
+			sourceTree = "<group>";
+		};
+		23AC4A16276065280007484F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				23AC4A1A276065900007484F /* Post.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		23AC4A172760652C0007484F /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				23AC4A19276065510007484F /* Local */,
+				23AC4A18276065460007484F /* Remote */,
+				23AC4A29276072BA0007484F /* DecoratorRemoteDataSource.swift */,
+				23AC4A22276068940007484F /* FallBackDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		23AC4A18276065460007484F /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				23AC4A1C276065E70007484F /* RemoteDataSource.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		23AC4A19276065510007484F /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				23AC4A08276064ED0007484F /* FallbackDataSource.xcdatamodeld */,
+				23AC4A1F276067230007484F /* LocalDataSource.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		23AC4A1E276065ED0007484F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				23AC49FF276064ED0007484F /* AppDelegate.swift */,
+				23AC4A01276064ED0007484F /* SceneDelegate.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		23AC4A2427606A5C0007484F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				23AC4A2527606A670007484F /* CoreDataService.swift */,
+				23AC4A2727606A6E0007484F /* ApiService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +196,6 @@
 			files = (
 				23AC4A0F276064EE0007484F /* LaunchScreen.storyboard in Resources */,
 				23AC4A0C276064EE0007484F /* Assets.xcassets in Resources */,
-				23AC4A07276064ED0007484F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +207,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				23AC4A04276064ED0007484F /* ViewController.swift in Sources */,
+				23AC4A2A276072BA0007484F /* DecoratorRemoteDataSource.swift in Sources */,
 				23AC4A00276064ED0007484F /* AppDelegate.swift in Sources */,
+				23AC4A1B276065900007484F /* Post.swift in Sources */,
+				23AC4A20276067230007484F /* LocalDataSource.swift in Sources */,
 				23AC4A0A276064ED0007484F /* FallbackDataSource.xcdatamodeld in Sources */,
+				23AC4A1D276065E70007484F /* RemoteDataSource.swift in Sources */,
+				23AC4A2827606A6E0007484F /* ApiService.swift in Sources */,
+				23AC4A23276068940007484F /* FallBackDataSource.swift in Sources */,
+				23AC4A2627606A670007484F /* CoreDataService.swift in Sources */,
 				23AC4A02276064ED0007484F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,14 +223,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		23AC4A05276064ED0007484F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				23AC4A06276064ED0007484F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		23AC4A0D276064EE0007484F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -298,7 +362,6 @@
 				INFOPLIST_FILE = FallbackDataSource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -326,7 +389,6 @@
 				INFOPLIST_FILE = FallbackDataSource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
