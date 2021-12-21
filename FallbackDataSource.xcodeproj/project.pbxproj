@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2381B45027720DFF00D63031 /* FallbackDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381B44F27720DFF00D63031 /* FallbackDataSourceTests.swift */; };
 		23AC4A00276064ED0007484F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC49FF276064ED0007484F /* AppDelegate.swift */; };
 		23AC4A02276064ED0007484F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A01276064ED0007484F /* SceneDelegate.swift */; };
 		23AC4A04276064ED0007484F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A03276064ED0007484F /* ViewController.swift */; };
@@ -22,7 +23,19 @@
 		23AC4A2A276072BA0007484F /* DecoratorRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A29276072BA0007484F /* DecoratorRemoteDataSource.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2381B45127720DFF00D63031 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23AC49F4276064ED0007484F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23AC49FB276064ED0007484F;
+			remoteInfo = FallbackDataSource;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2381B44D27720DFF00D63031 /* FallbackDataSourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FallbackDataSourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2381B44F27720DFF00D63031 /* FallbackDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallbackDataSourceTests.swift; sourceTree = "<group>"; };
 		23AC49FC276064ED0007484F /* FallbackDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallbackDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AC49FF276064ED0007484F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23AC4A01276064ED0007484F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +54,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2381B44A27720DFF00D63031 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23AC49F9276064ED0007484F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,10 +71,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2381B44E27720DFF00D63031 /* FallbackDataSourceTests */ = {
+			isa = PBXGroup;
+			children = (
+				2381B44F27720DFF00D63031 /* FallbackDataSourceTests.swift */,
+			);
+			path = FallbackDataSourceTests;
+			sourceTree = "<group>";
+		};
 		23AC49F3276064ED0007484F = {
 			isa = PBXGroup;
 			children = (
 				23AC49FE276064ED0007484F /* FallbackDataSource */,
+				2381B44E27720DFF00D63031 /* FallbackDataSourceTests */,
 				23AC49FD276064ED0007484F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				23AC49FC276064ED0007484F /* FallbackDataSource.app */,
+				2381B44D27720DFF00D63031 /* FallbackDataSourceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +169,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2381B44C27720DFF00D63031 /* FallbackDataSourceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2381B45527720DFF00D63031 /* Build configuration list for PBXNativeTarget "FallbackDataSourceTests" */;
+			buildPhases = (
+				2381B44927720DFF00D63031 /* Sources */,
+				2381B44A27720DFF00D63031 /* Frameworks */,
+				2381B44B27720DFF00D63031 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2381B45227720DFF00D63031 /* PBXTargetDependency */,
+			);
+			name = FallbackDataSourceTests;
+			productName = FallbackDataSourceTests;
+			productReference = 2381B44D27720DFF00D63031 /* FallbackDataSourceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		23AC49FB276064ED0007484F /* FallbackDataSource */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23AC4A13276064EE0007484F /* Build configuration list for PBXNativeTarget "FallbackDataSource" */;
@@ -163,9 +211,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					2381B44C27720DFF00D63031 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 23AC49FB276064ED0007484F;
+					};
 					23AC49FB276064ED0007484F = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -185,11 +237,19 @@
 			projectRoot = "";
 			targets = (
 				23AC49FB276064ED0007484F /* FallbackDataSource */,
+				2381B44C27720DFF00D63031 /* FallbackDataSourceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2381B44B27720DFF00D63031 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23AC49FA276064ED0007484F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +262,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2381B44927720DFF00D63031 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2381B45027720DFF00D63031 /* FallbackDataSourceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23AC49F8276064ED0007484F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +290,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2381B45227720DFF00D63031 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23AC49FB276064ED0007484F /* FallbackDataSource */;
+			targetProxy = 2381B45127720DFF00D63031 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		23AC4A0D276064EE0007484F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -234,6 +310,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2381B45327720DFF00D63031 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S9J6B4A78J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.windy.FallbackDataSourceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FallbackDataSource.app/FallbackDataSource";
+			};
+			name = Debug;
+		};
+		2381B45427720DFF00D63031 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S9J6B4A78J;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.windy.FallbackDataSourceTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FallbackDataSource.app/FallbackDataSource";
+			};
+			name = Release;
+		};
 		23AC4A11276064EE0007484F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -407,6 +521,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2381B45527720DFF00D63031 /* Build configuration list for PBXNativeTarget "FallbackDataSourceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2381B45327720DFF00D63031 /* Debug */,
+				2381B45427720DFF00D63031 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		23AC49F7276064ED0007484F /* Build configuration list for PBXProject "FallbackDataSource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
