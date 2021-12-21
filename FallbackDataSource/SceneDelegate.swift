@@ -11,7 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
@@ -21,20 +25,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         nav.navigationBar.prefersLargeTitles = true
         
         window?.rootViewController = nav
-        
     }
     
     func buildVC() -> ViewController {
         
-        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        let coreDataService = CoreDataService.shared(moc)
-
         let remoteDataService = DecoratorRemoteDataSource(
             decorate: RemoteDataSource(apiService: .shared),
-            coreDataService: coreDataService)
+            coreDataService: .shared)
         
-        let localDataService = LocalDataSource(coreDataService: coreDataService)
+        let localDataService = LocalDataSource(coreDataService: .shared)
         
         let fallBackLoader = FallBackDataSource(
             localDataSource: localDataService,

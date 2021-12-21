@@ -9,15 +9,19 @@ import CoreData
 
 class CoreDataService {
     
-    private let moc: NSManagedObjectContext
+    static let shared = CoreDataService()
     
-    static let shared: ((NSManagedObjectContext) -> CoreDataService) = { moc in
-        return CoreDataService(moc: moc)
-    }
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "FallbackDataSource")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
     
-    private init(moc: NSManagedObjectContext) {
-        self.moc = moc
-    }
+    lazy var moc: NSManagedObjectContext = persistentContainer.viewContext
     
     func retrieveData(completion: @escaping (Result<[Post], Error>) -> ()) {
         let request = NSFetchRequest<PostEntity>(entityName: "PostEntity")
