@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2381B45027720DFF00D63031 /* FallbackDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381B44F27720DFF00D63031 /* FallbackDataSourceTests.swift */; };
-		2381B458277217BD00D63031 /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381B457277217BD00D63031 /* PostPresenter.swift */; };
+		2381B458277217BD00D63031 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381B457277217BD00D63031 /* PostViewModel.swift */; };
 		2381B45A277217EC00D63031 /* PostContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2381B459277217EC00D63031 /* PostContract.swift */; };
 		23AC4A00276064ED0007484F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC49FF276064ED0007484F /* AppDelegate.swift */; };
 		23AC4A02276064ED0007484F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AC4A01276064ED0007484F /* SceneDelegate.swift */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		2381B44D27720DFF00D63031 /* FallbackDataSourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FallbackDataSourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2381B44F27720DFF00D63031 /* FallbackDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallbackDataSourceTests.swift; sourceTree = "<group>"; };
-		2381B457277217BD00D63031 /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
+		2381B457277217BD00D63031 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		2381B459277217EC00D63031 /* PostContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContract.swift; sourceTree = "<group>"; };
 		23AC49FC276064ED0007484F /* FallbackDataSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FallbackDataSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23AC49FF276064ED0007484F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		2381B456277217B100D63031 /* PostModule */ = {
 			isa = PBXGroup;
 			children = (
-				2381B457277217BD00D63031 /* PostPresenter.swift */,
+				2381B457277217BD00D63031 /* PostViewModel.swift */,
 				23AC4A03276064ED0007484F /* ViewController.swift */,
 				2381B459277217EC00D63031 /* PostContract.swift */,
 			);
@@ -288,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2381B458277217BD00D63031 /* PostPresenter.swift in Sources */,
+				2381B458277217BD00D63031 /* PostViewModel.swift in Sources */,
 				23AC4A04276064ED0007484F /* ViewController.swift in Sources */,
 				2381B45A277217EC00D63031 /* PostContract.swift in Sources */,
 				23AC4A2A276072BA0007484F /* DecoratorRemoteDataSource.swift in Sources */,

@@ -39,9 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             localDataSource: localDataService,
             remoteDataSource: remoteDataService)
                 
-        let presenter = PostPresenter(dataLoader: fallBackLoader)
-        let vc = ViewController(presenter: presenter)
-        presenter.delegate = vc
+        let vm = PostViewModel(dataLoader: fallBackLoader)
+        let vc = ViewController(viewModel: vm)
         vc.title = "Posts"
         
         return vc

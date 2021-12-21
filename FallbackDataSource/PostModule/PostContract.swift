@@ -7,15 +7,6 @@
 
 import Foundation
 
-protocol PostPresenterOutput: AnyObject {
-    func didFetchPost(posts: [Post])
-    func didError(message: String)
-}
-
-protocol PostPresenterInput {
-    func fetchPost()
-}
-
 protocol DataLoader {
     func execute(completion: @escaping (Result<[Post], Error>) -> ())
 }

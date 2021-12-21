@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
     
-    init(presenter: PostPresenterInput) {
-        self.presenter = presenter
+    init(viewModel: PostViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -18,26 +19,30 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var presenter: PostPresenterInput
-    private var posts: [Post] = [] {
+    private var viewModel: PostViewModel
+    
+    var posts: [Post] = [] {
         didSet {
+            refreshControl.endRefreshing()
             tableView.reloadData()
         }
     }
-    
     var tableView: UITableView!
     var refreshControl: UIRefreshControl!
+    
+    private var disposeBag = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        createBinding()
         fetchData()
     }
     
     @objc
     func fetchData() {
-        presenter.fetchPost()
+        viewModel.fetchPost()
     }
 
     func setupTableView() {
@@ -49,6 +54,20 @@ class ViewController: UIViewController {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         tableView.refreshControl = refreshControl
+    }
+    
+    func createBinding() {
+        viewModel.$posts
+            .sink { [weak self] posts in
+                self?.posts = posts
+            }.store(in: &disposeBag)
+        
+        viewModel.$errorMessage
+            .sink { [weak self] message in
+                guard let message = message else { return }
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                self?.present(alert, animated: true, completion: nil)
+            }.store(in: &disposeBag)
     }
     
 }
@@ -83,20 +102,6 @@ extension ViewController: UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-}
-
-extension ViewController: PostPresenterOutput {
-    
-    func didFetchPost(posts: [Post]) {
-        self.posts = posts
-        self.refreshControl.endRefreshing()
-    }
-    
-    func didError(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        present(alert, animated: true, completion: nil)
     }
     
 }

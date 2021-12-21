@@ -7,9 +7,10 @@
 
 import Foundation
 
-class PostPresenter: PostPresenterInput {
+class PostViewModel {
     
-    weak var delegate: PostPresenterOutput?
+    @Published var posts: [Post] = []
+    @Published var errorMessage: String?
     
     private let dataLoader: DataLoader
     
@@ -22,9 +23,9 @@ class PostPresenter: PostPresenterInput {
             guard let self = self else { return }
             switch result {
             case .success(let posts):
-                self.delegate?.didFetchPost(posts: posts)
+                self.posts = posts
             case .failure(let err):
-                self.delegate?.didError(message: err.localizedDescription)
+                self.errorMessage = err.localizedDescription
             }
         }
     }

@@ -11,9 +11,9 @@ import XCTest
 class FallbackDataSourceTests: XCTestCase {
 
     func test_didFetchData() {
-        let spy = SpyPresenter(result: .success([Post(userId: 1, id: 1, title: "Title 1", body: "Body 1")]))
-        let sut = ViewController(presenter: spy)
-        spy.output = sut
+        let stub = StubDataLoader(result: .success([Post(userId: 1, id: 1, title: "Title 1", body: "Body 1")]))
+        let vm = PostViewModel(dataLoader: stub)
+        let sut = ViewController(viewModel: vm)
         sut.loadViewIfNeeded()
 
         let numberOfRows = sut.tableView.numberOfRows(inSection: 0)
@@ -22,33 +22,26 @@ class FallbackDataSourceTests: XCTestCase {
     
     func test_didFetchDataWithError() {
         let error = NSError(domain: "", code: 0, userInfo: nil)
-        let spy = SpyPresenter(result: .failure(error))
-        let sut = TestableViewController(presenter: spy)
-        spy.output = sut
+        let stub = StubDataLoader(result: .failure(error))
+        let vm = PostViewModel(dataLoader: stub)
+        let sut = TestableViewController(viewModel: vm)
         sut.loadViewIfNeeded()
 
         XCTAssertNotNil(sut.presentedAlert)
     }
     
-    class SpyPresenter: PostPresenterInput {
-        
-        weak var output: PostPresenterOutput?
-        
+    class StubDataLoader: DataLoader {
+                
         private let result: Result<[Post], Error>
         
         init(result: Result<[Post], Error>) {
             self.result = result
         }
         
-        func fetchPost() {
-            switch result {
-            case .success(let posts):
-                output?.didFetchPost(posts: posts)
-            case .failure(let err):
-                output?.didError(message: err.localizedDescription)
-            }
+        func execute(completion: @escaping (Result<[Post], Error>) -> ()) {
+            completion(result)
         }
-        
+      
     }
     
 }
