@@ -7,14 +7,10 @@
 
 import UIKit
 
-protocol DataLoader {
-    func execute(completion: @escaping (Result<[Post], Error>) -> ())
-}
-
 class ViewController: UIViewController {
     
-    init(dataLoader: DataLoader) {
-        self.dataLoader = dataLoader
+    init(presenter: PostPresenterInput) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -22,8 +18,12 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var dataLoader: DataLoader
-    private var posts: [Post] = []
+    private var presenter: PostPresenterInput
+    private var posts: [Post] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     var tableView: UITableView!
     var refreshControl: UIRefreshControl!
@@ -37,17 +37,7 @@ class ViewController: UIViewController {
     
     @objc
     func fetchData() {
-        dataLoader.execute { [weak self] result in
-            guard let self = self else { return }
-            self.refreshControl.endRefreshing()
-            switch result {
-            case .success(let posts):
-                self.posts = posts
-                self.tableView.reloadData()
-            case .failure(let err):
-                self.showAlert(message: err.localizedDescription)
-            }
-        }
+        presenter.fetchPost()
     }
 
     func setupTableView() {
@@ -61,16 +51,14 @@ class ViewController: UIViewController {
         tableView.refreshControl = refreshControl
     }
     
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        self.present(alert, animated: true, completion: nil)
-    }
-
 }
 
 extension ViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = posts[indexPath.row].title
         cell.textLabel?.numberOfLines = 0
@@ -79,7 +67,10 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return posts.count
     }
     
@@ -87,8 +78,25 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
+extension ViewController: PostPresenterOutput {
+    
+    func didFetchPost(posts: [Post]) {
+        self.posts = posts
+        self.refreshControl.endRefreshing()
+    }
+    
+    func didError(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        present(alert, animated: true, completion: nil)
     }
     
 }

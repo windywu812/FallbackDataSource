@@ -11,26 +11,28 @@ import XCTest
 class FallbackDataSourceTests: XCTestCase {
 
     func test_didFetchData() {
-        let stub = StubDataLoader(result: .success([
-            Post(userId: 1, id: 1, title: "Title 1", body: "Body 1")
-        ]))
-        let sut = ViewController(dataLoader: stub)
+        let spy = SpyPresenter(result: .success([Post(userId: 1, id: 1, title: "Title 1", body: "Body 1")]))
+        let sut = ViewController(presenter: spy)
+        spy.output = sut
         sut.loadViewIfNeeded()
 
         let numberOfRows = sut.tableView.numberOfRows(inSection: 0)
         XCTAssertEqual(numberOfRows, 1)
     }
     
-    func test_didRefreshData() {
+    func test_didFetchDataWithError() {
         let error = NSError(domain: "", code: 0, userInfo: nil)
-        let stub = StubDataLoader(result: .failure(error))
-        let sut = TestableViewController(dataLoader: stub)
+        let spy = SpyPresenter(result: .failure(error))
+        let sut = TestableViewController(presenter: spy)
+        spy.output = sut
         sut.loadViewIfNeeded()
-        
+
         XCTAssertNotNil(sut.presentedAlert)
     }
     
-    class StubDataLoader: DataLoader {
+    class SpyPresenter: PostPresenterInput {
+        
+        weak var output: PostPresenterOutput?
         
         private let result: Result<[Post], Error>
         
@@ -38,9 +40,15 @@ class FallbackDataSourceTests: XCTestCase {
             self.result = result
         }
         
-        func execute(completion: @escaping (Result<[Post], Error>) -> ()) {
-            completion(result)
+        func fetchPost() {
+            switch result {
+            case .success(let posts):
+                output?.didFetchPost(posts: posts)
+            case .failure(let err):
+                output?.didError(message: err.localizedDescription)
+            }
         }
+        
     }
     
 }
